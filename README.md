@@ -3,7 +3,7 @@
 This project demonstrates how to read **RS485 temperature and humidity sensor data**  
 and display it on a **5" CrowPanel ESP32-S3** using **LVGL UI framework**.
 ## Preview
-![demo](https://github.com/pangcrd/CrowPanel-RS485-TempHumidity-ESP32S3-LVGL/blob/main/img/cyd.png)
+![demo](https://github.com/pangcrd/CrowPanel-RS485-TempHumidity-ESP32S3-LVGL/blob/main/Source_code/img/cover.png)
 
 ## Features
 - Real-time RS485 (Modbus) temperature & humidity reading  
