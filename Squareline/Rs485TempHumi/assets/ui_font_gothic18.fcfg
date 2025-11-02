@@ -1,0 +1,16 @@
+{
+  "codename": "gothic18",
+  "ttf_path": "/assets/bgothm.ttf",
+  "bin_path": "/assets\\ui_font_gothic18.bin",
+  "c_path": "/assets\\ui_font_gothic18.c",
+  "cfg_path": "/assets\\ui_font_gothic18.fcfg",
+  "size": 18,
+  "bpp": 1,
+  "letters": 0,
+  "ranges": [
+    "0x20-0x7f"
+  ],
+  "symbols": "",
+  "customparams": "--no-compress --no-prefilter",
+  "uploaded": false
+}

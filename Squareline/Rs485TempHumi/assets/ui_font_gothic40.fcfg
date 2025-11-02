@@ -1,0 +1,16 @@
+{
+  "codename": "gothic40",
+  "ttf_path": "/assets/bgothm.ttf",
+  "bin_path": "/assets\\ui_font_gothic40.bin",
+  "c_path": "/assets\\ui_font_gothic40.c",
+  "cfg_path": "/assets\\ui_font_gothic40.fcfg",
+  "size": 40,
+  "bpp": 1,
+  "letters": 0,
+  "ranges": [
+    "0x20-0x7f"
+  ],
+  "symbols": "º",
+  "customparams": "--no-compress --no-prefilter",
+  "uploaded": false
+}

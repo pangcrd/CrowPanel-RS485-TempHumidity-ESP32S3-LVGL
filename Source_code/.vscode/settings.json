@@ -1,0 +1,6 @@
+{
+    "idf.espIdfPathWin": "G:/Espressif/Espressif/frameworks/esp-idf-v4.4.1/",
+    "idf.toolsPathWin": "G:\\Espressif\\Espressif",
+    "idf.pythonInstallPath": "G:\\Espressif\\Espressif\\tools\\idf-python\\3.8.7\\python.exe",
+    "cmake.sourceDirectory": "E:/advance/4.3_5.0platfromIO/lib/Adafruit BusIO"
+}

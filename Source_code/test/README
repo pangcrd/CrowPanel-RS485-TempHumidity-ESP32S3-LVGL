@@ -1,0 +1,87 @@
+# ESP32-S3 RS485 Sensor UI (LVGL + Modbus)
+
+This project reads temperature and humidity data from an RS485 sensor (Modbus RTU protocol) using ESP32-S3, then displays the values on an LVGL user interface (labels + arcs).
+
+---
+
+## ⚙️ Hardware Setup
+
+| Component | Description |
+|------------|-------------|
+| MCU | ESP32-S3 (tested on ESP32-S3-WROOM) |
+| Sensor | XY-MD02 (SHT20 inside, Modbus RTU) |
+| Interface | RS485 (via MAX485 module) |
+| TX Pin | GPIO 20 |
+| RX Pin | GPIO 19 |
+| Baud Rate | 9600 (8N1) |
+
+Make sure the **A/B lines** on the RS485 module are not swapped — otherwise, the sensor will not respond.
+
+---
+
+## 🧩 Software Overview
+
+### Key Files
+- `XY_MD02_Config.h` → contains Modbus setup, data parsing, and UI update function  
+- `main.cpp` → initializes UART, LVGL, and periodically calls the update function
+
+---
+
+## 🧠 Main Concepts
+
+### 1️⃣ Avoid Blocking the UI
+The standard ModbusMaster library is *blocking*.  
+If you call it too frequently or inside LVGL timers, the UI will **freeze or reset**.
+
+To prevent this:
+- Use **`millis()` timing** instead of `delay()`
+- Never call `node.readInputRegisters()` inside LVGL callbacks
+- Keep Modbus reading in the **main loop** (core 1)
+
+### 2️⃣ Non-Blocking Update Function
+
+```cpp
+void UpdateRS485(unsigned long updateTime,
+                 lv_obj_t* lblTemp, lv_obj_t* lblHumi,
+                 lv_obj_t* arcTemp, lv_obj_t* arcHumi);
+This function:
+
+Reads Modbus data every updateTime ms
+
+Updates the temperature and humidity labels
+
+Updates both LVGL arcs
+
+Prints values to Serial Monitor
+
+Example usage:
+
+cpp
+Copy code
+XYMD02::UpdateRS485(2000, ui_LabelTemp, ui_LabelHumi, ui_ArcTemp, ui_ArcHumi);
+3️⃣ LVGL Object Type Safety
+Be careful when updating widgets:
+
+lv_label_set_text() → expects string
+
+lv_arc_set_value() → expects integer
+
+Issue	Cause	Fix
+UI freezes or ESP resets	Modbus blocking too long	Use millis timing or separate task on same core
+LVGL crash on label update	Wrong widget type or NULL pointer	Verify all UI object types and initialization
+No data from RS485	TX/RX pins reversed or A/B swapped	Check wiring and 120Ω termination
+Serial prints but UI doesn't update	Wrong LVGL update context	Only update inside loop() or after lv_timer_handler()
+
+
+🧰 Notes
+Keep all Modbus operations in the same core as loop() (core 1)
+
+Avoid heavy Modbus operations in LVGL timer callbacks
+
+Always validate object pointers before calling LVGL APIs
+
+Use snprintf() instead of sprintf() for safer string formatting
+
+🧑‍💻 Author Notes
+This project started as a debugging test for Modbus and ended up becoming a stable RS485 + LVGL template.
+Perfect for quick integration of industrial sensors with embedded UI.
