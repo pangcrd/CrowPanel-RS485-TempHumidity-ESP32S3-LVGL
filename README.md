@@ -14,7 +14,7 @@ and display it on a **5" CrowPanel ESP32-S3** using **LVGL UI framework**.
 ## Hardware
 - CrowPanel ESP32-S3  
 - RS485 Temperature & Humidity Sensor  
-- [CrowPanel ESP32-S3 5"](https://www.elecrow.com/crowpanel-advance-5-0-hmi-esp32-ai-display-800x480-ips-artificial-intelligent-touch-screen.html)  
+- [CrowPanel ESP32-S3 5"](https://www.elecrow.com/crowpanel-advance-5-0-hmi-esp32-ai-display-800x480-ips-artificial-intelligent-touch-screen.html)](https://youtu.be/zFjvRxR7uKs)  
 
 ## Software
 - LVGL v8.3.11  
