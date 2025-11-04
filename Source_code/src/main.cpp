@@ -59,16 +59,11 @@ void setup()
 
   lv_init();
 
-  // size_t buffer_size = sizeof(lv_color_t) * LCD_H_RES * LCD_V_RES;
-  // buf  = (lv_color_t*) heap_caps_malloc(buffer_size, MALLOC_CAP_SPIRAM);
-  // buf1 = (lv_color_t*) heap_caps_malloc(buffer_size, MALLOC_CAP_SPIRAM);
-  // lv_disp_draw_buf_init(&draw_buf, buf, buf1, LCD_H_RES * LCD_V_RES);
-
-  size_t buffer_size = sizeof(lv_color_t) * LCD_H_RES * 10;
+  size_t buffer_size = sizeof(lv_color_t) * LCD_H_RES * 100;
   buf  = (lv_color_t *)heap_caps_malloc(buffer_size, MALLOC_CAP_DMA);
   buf1 = (lv_color_t *)heap_caps_malloc(buffer_size, MALLOC_CAP_DMA);
 
-  lv_disp_draw_buf_init(&draw_buf, buf, buf1, LCD_H_RES * 10);
+  lv_disp_draw_buf_init(&draw_buf, buf, buf1, LCD_H_RES * 100);
 
   // Initialize display
   static lv_disp_drv_t disp_drv;
