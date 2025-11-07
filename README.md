@@ -10,6 +10,7 @@ and display it on a **5" CrowPanel ESP32-S3** using **LVGL UI framework**.
 - LVGL UI dashboard with smooth updates
 - Display RTC clock sync with wifi
 - Monitor log
+- Ajustable brightness with slider
 - Designed for 5" CrowPanel ESP32-S3  
 - Easy to customize and expand 
 
