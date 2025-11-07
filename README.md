@@ -7,7 +7,9 @@ and display it on a **5" CrowPanel ESP32-S3** using **LVGL UI framework**.
 
 ## Features
 - Real-time RS485 (Modbus) temperature & humidity reading  
-- LVGL UI dashboard with smooth updates  
+- LVGL UI dashboard with smooth updates
+- Display RTC clock sync with wifi
+- Monitor log
 - Designed for 5" CrowPanel ESP32-S3  
 - Easy to customize and expand 
 
