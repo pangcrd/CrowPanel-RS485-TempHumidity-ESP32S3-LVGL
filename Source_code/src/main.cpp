@@ -59,6 +59,11 @@ void setup()
 
   lv_init();
 
+  // size_t buffer_size = sizeof(lv_color_t) * LCD_H_RES * LCD_V_RES;
+  // buf  = (lv_color_t*) heap_caps_malloc(buffer_size, MALLOC_CAP_SPIRAM);
+  // buf1 = (lv_color_t*) heap_caps_malloc(buffer_size, MALLOC_CAP_SPIRAM);
+
+
   size_t buffer_size = sizeof(lv_color_t) * LCD_H_RES * 100;
   buf  = (lv_color_t *)heap_caps_malloc(buffer_size, MALLOC_CAP_DMA);
   buf1 = (lv_color_t *)heap_caps_malloc(buffer_size, MALLOC_CAP_DMA);
@@ -105,7 +110,12 @@ void loop()
       //RTC_BM8563::printRTC();
       RTC_PCF8563::updateRTCui(ui_Label7, ui_Label8);      
     }
-    XYMD02::UpdateRS485_UI(ui_Label1, ui_Label3,ui_tempgauge,ui_hunigauge);
+    /** Gauge Start Up */
+    if (!startup_done) {
+        XYMD02::Gauge_Startup_Animation(ui_tempgauge,ui_hunigauge);
+    } else {
+        XYMD02::UpdateRS485_UI(ui_Label1, ui_Label3,ui_tempgauge,ui_hunigauge);
+    }
     BRIGHTNESS::send_cmd_brightness(); 
     I2C_BUZZ::buzzer_update();
     delay(5);

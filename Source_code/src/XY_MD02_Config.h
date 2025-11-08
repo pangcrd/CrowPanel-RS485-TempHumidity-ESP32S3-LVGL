@@ -7,6 +7,11 @@
 #include "lvgl.h"
 #include "screen_log.h"
 
+bool startup_done = false;
+bool startup_up = true;
+int startup_value = 0;
+unsigned long last_update = 0;
+
 namespace XYMD02 {
     ModbusMaster node;            
     float temperature = 0;         
@@ -114,6 +119,45 @@ namespace XYMD02 {
             
         }
     }
+// ====== Startup effect for gauge ======
+void Gauge_Startup_Animation(lv_obj_t* gaugeTemp, lv_obj_t* gaugeHumi) {
+    const int MAX_VALUE = 100;
+    const int STEP = 3;               // speed of increase/decrease
+    const unsigned long INTERVAL = 20; // ms 
+
+    unsigned long now = millis();
+    if (now - last_update < INTERVAL) return;
+    last_update = now;
+
+    if (!startup_done) {
+        // Up
+        if (startup_up) {
+            startup_value += STEP;
+            if (startup_value >= MAX_VALUE) {
+                startup_value = MAX_VALUE;
+                startup_up = false;
+            }
+        }
+        // Down
+        else {
+            startup_value -= STEP;
+            if (startup_value <= 0) {
+                startup_value = 0;
+                startup_done = true; 
+            }
+        }
+
+        lv_arc_set_value(gaugeTemp, startup_value);
+        lv_arc_set_value(gaugeHumi, startup_value);
+        // Update RPM labels with the current values
+        char buf[16];
+        snprintf(buf, sizeof(buf), "%dºC", startup_value);
+        lv_label_set_text(ui_Label1, buf);
+        
+        snprintf(buf, sizeof(buf), "%d%%", startup_value);
+        lv_label_set_text(ui_Label3, buf);
+    }
+}
 }
 
 #endif

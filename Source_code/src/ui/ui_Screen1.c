@@ -92,7 +92,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_x(ui_tempgauge, -203);
     lv_obj_set_y(ui_tempgauge, -10);
     lv_obj_set_align(ui_tempgauge, LV_ALIGN_CENTER);
-    lv_arc_set_value(ui_tempgauge, 20);
+    lv_arc_set_value(ui_tempgauge, 0);
     lv_arc_set_bg_angles(ui_tempgauge, 120, 70);
     lv_obj_set_style_arc_width(ui_tempgauge, 50, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_arc_rounded(ui_tempgauge, true, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -111,7 +111,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_width(ui_Label1, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label1, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_Label1, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label1, "20");
+    lv_label_set_text(ui_Label1, "00");
     lv_obj_set_style_text_color(ui_Label1, lv_color_hex(0xFDC560), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Label1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Label1, &ui_font_gothic40, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -133,7 +133,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_x(ui_hunigauge, 80);
     lv_obj_set_y(ui_hunigauge, -10);
     lv_obj_set_align(ui_hunigauge, LV_ALIGN_CENTER);
-    lv_arc_set_value(ui_hunigauge, 20);
+    lv_arc_set_value(ui_hunigauge, 0);
     lv_arc_set_bg_angles(ui_hunigauge, 120, 70);
     lv_obj_set_style_arc_width(ui_hunigauge, 50, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_arc_rounded(ui_hunigauge, true, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -152,7 +152,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_width(ui_Label3, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label3, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_Label3, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label3, "20");
+    lv_label_set_text(ui_Label3, "00");
     lv_obj_set_style_text_color(ui_Label3, lv_color_hex(0x5CCCFA), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Label3, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Label3, &ui_font_gothic40, LV_PART_MAIN | LV_STATE_DEFAULT);
